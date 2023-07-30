@@ -9,7 +9,6 @@ namespace WorkerApp.Entities
         public double BaseSalary { get; set; }
         public Department Department { get; set; }
         public List<HourContract> Contracts { get; set; } = new List<HourContract>();
-        pu
 
         public Worker()
         {
@@ -23,12 +22,12 @@ namespace WorkerApp.Entities
             Department = departament;
         }
 
-        public void AddContract(Contracts contract)
+        public void AddContract(HourContract contract)
         {
             Contracts.Add(contract);
         }
 
-        public void RemoveContract(Contracts contract)
+        public void RemoveContract(HourContract contract)
         {
             Contracts.Remove(contract);
         }
@@ -37,11 +36,11 @@ namespace WorkerApp.Entities
         {
             double sum = BaseSalary;
 
-            foreach (Contracts contract in Contracts)
+            foreach (HourContract contract in Contracts)
             {
-                if (year == contract.Year && month == contract.Month)
+                if (contract.Date.Year == year && contract.Date.Month == month)
                 {
-                    sum += contract.TotalValue
+                    sum += contract.TotalValue();
                 }
             }
            

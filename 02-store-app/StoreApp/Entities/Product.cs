@@ -9,6 +9,11 @@
         {
         }
 
+        public Product(string name)
+        {
+            Name = name;
+        }
+
         public Product(string name, double price)
         {
             Name = name;

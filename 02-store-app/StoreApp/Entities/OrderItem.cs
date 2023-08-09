@@ -2,7 +2,7 @@
 {
     internal class OrderItem
     {
-        public Product Name { get; set; }
+        public Product Product { get; set; }
         public double Price { get; set; }
         public int Quantity { get; set; }
 
@@ -10,9 +10,9 @@
         {
         }
 
-        public OrderItem(Product name, double price, int quantity)
+        public OrderItem(Product product, double price, int quantity)
         {
-            Name = name;
+            Product = product;
             Price = price;
             Quantity = quantity;
         }

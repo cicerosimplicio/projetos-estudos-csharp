@@ -4,7 +4,7 @@
     {
         public int Number { get; set; }
         public string Holder { get; set; }
-        public double Balance { get; set; }
+        public double Balance { get; private protected set; }
 
         public Account()
         {

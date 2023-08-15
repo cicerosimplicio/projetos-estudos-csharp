@@ -4,7 +4,10 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.Write("Enter the number of employees: ");
+            int qtEmployee = int.Parse(Console.ReadLine());
+
+            Console.WriteLine(qtEmployee);
         }
     }
 }

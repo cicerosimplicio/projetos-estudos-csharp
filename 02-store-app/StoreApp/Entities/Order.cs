@@ -1,4 +1,5 @@
-﻿using StoreApp.Enums;
+﻿using StoreApp.Entities.Enums;
+using System.Text;
 
 namespace StoreApp.Entities
 {
@@ -40,6 +41,28 @@ namespace StoreApp.Entities
             }
 
             return sum;
+        }
+
+        public override string ToString()
+        {
+            double sum = 0;
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("");
+            sb.AppendLine("----- Order Sumary -----");
+            sb.AppendLine($"Order moment: {Moment.ToString("dd/MM/yyyy")}");
+            sb.AppendLine($"Order Status: {Status.ToString()}");
+            sb.AppendLine($"Client: {Client.Name} { Client.BirthDate.ToString("dd/MM/yyyy") } - {Client.Email}");
+
+            foreach (OrderItem item in Items)
+            {
+                sb.AppendLine($"Product name: {item.Product.Name}, Quantity: {item.Quantity}, Price: {item.Price}");
+                sum += item.SubTotal();
+            }
+
+            sb.AppendLine($"Total price: {sum.ToString("F2")}");
+
+            return sb.ToString();
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using StoreApp.Entities;
-using StoreApp.Enums;
+using StoreApp.Entities.Enums;
 
 namespace StoreApp
 {
@@ -27,6 +27,7 @@ namespace StoreApp
 
             for (int i = 1; i < qtItems; i++)
             {
+                Console.WriteLine($"Enter {i} item data:");
                 Console.Write("Product name: ");
                 string productName = Console.ReadLine();
                 Console.Write("Product price: ");
@@ -38,6 +39,8 @@ namespace StoreApp
                 OrderItem item = new OrderItem(product, price, quantity);
                 order.AddItem(item);
             }
+
+            Console.WriteLine(order.ToString());
         }
     }
 }

@@ -36,7 +36,7 @@ namespace CleanArchMVC.Domain.Entities
                 "O produto deve ter um nome.");
 
             DomainExceptionValidation.When(name.Length < 3,
-                "O nome deve ter mais que 5 caracteres.");
+                "O nome deve ter mais que 3 caracteres.");
 
             DomainExceptionValidation.When(String.IsNullOrEmpty(description),
                 "A categoria deve ser definida.");
@@ -47,7 +47,7 @@ namespace CleanArchMVC.Domain.Entities
             DomainExceptionValidation.When(stock < 0,
                 "Stock inválido.");
 
-            DomainExceptionValidation.When(name.Length > 250,
+            DomainExceptionValidation.When(image.Length > 250,
                 "O link da imagem não pode exceder 250 caracteres.");
 
             Name = name;

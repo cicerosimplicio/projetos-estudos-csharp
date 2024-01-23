@@ -50,6 +50,14 @@ namespace CleanArchMVC.Domain.Tests
         }
 
         [Fact]
+        public void CreateProduct_WithNullImageName_NoNullReferenceException()
+        {
+            Action action = () => new Product(1, "Produto 1", "Descrição produto 1", 9.99m, 99, null);
+            action.Should()
+                .NotThrow<NullReferenceException>();
+        }
+
+        [Fact]
         public void CreateProduct_WithEmptyImageName_DomainExceptionInvalidName()
         {
             Action action = () => new Product(1, "Produto 1", "Descrição produto 1", 9.99m, 99, "");

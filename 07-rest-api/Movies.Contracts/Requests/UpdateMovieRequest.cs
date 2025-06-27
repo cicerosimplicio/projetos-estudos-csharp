@@ -1,5 +1,3 @@
-using System;
-
 namespace Movies.Contracts.Requests;
 
 public class UpdateMovieRequest

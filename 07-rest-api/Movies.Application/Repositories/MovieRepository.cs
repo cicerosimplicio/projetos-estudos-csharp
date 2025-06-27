@@ -1,27 +1,52 @@
-using System;
 using Movies.Application.Models;
 
 namespace Movies.Application.Repositories;
 
 public class MovieRepository : IMovieRepository
 {
+    // Simula um banco de dados em memória
+    private readonly List<Movie> _movies = [];
+
     public Task<bool> CreateAsync(Movie movie)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<IEnumerable<Movie>> GetAllAsync()
-    {
-        throw new NotImplementedException();
+        _movies.Add(movie);
+        
+        return Task.FromResult(true);
     }
 
     public Task<Movie?> GetByIdAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var movie = _movies.SingleOrDefault(m => m.Id == id);
+
+        return Task.FromResult(movie);
     }
+    public Task<IEnumerable<Movie>> GetAllAsync()
+    {
+        return Task.FromResult(_movies.AsEnumerable());
+    }
+
 
     public Task<bool> UpdateAsync(Movie movie)
     {
-        throw new NotImplementedException();
+        var movieIndex = _movies.FindIndex(m => m.Id == movie.Id);
+
+        if (movieIndex == -1)
+        {
+            return Task.FromResult(false);
+        }
+        else
+        {
+            _movies[movieIndex] = movie;
+
+            return Task.FromResult(true);
+        }
+    }
+
+    public Task<bool> DeleteAsync(Guid id)
+    {
+        var removedCount = _movies.RemoveAll(m => m.Id == id);
+        var movieRemoved = removedCount > 0;
+
+        return Task.FromResult(movieRemoved);
     }
 }

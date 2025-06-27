@@ -14,8 +14,8 @@ public static class ApiEndpoints
         public const string Create = Base;
         public const string Get = $"{Base}/{{id:guid}}"; // Usa constraint para garantir que o id é um GUID
         public const string GetAll = Base;
-        public const string Update = Get;
-        public const string Delete = Get;
+        public const string Update = $"{Base}/{{id:guid}}";
+        public const string Delete = $"{Base}/{{id:guid}}";
     }
 
 }

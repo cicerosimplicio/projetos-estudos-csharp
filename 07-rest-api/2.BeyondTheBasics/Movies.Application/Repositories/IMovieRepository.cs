@@ -4,9 +4,11 @@ namespace Movies.Application.Repositories;
 
 public interface IMovieRepository
 {
-    Task<bool> CreateAsync(Movie movie);
-    Task<Movie?> GetByIdAsync(Guid id); // Usa nullable para indicar que o filme pode não ser encontrado
-    Task<IEnumerable<Movie>> GetAllAsync();
-    Task<bool> UpdateAsync(Movie movie);
-    Task<bool> DeleteAsync(Guid id);
+    Task<bool> CreateAsync(Movie movie, CancellationToken cancellationToken = default);
+    Task<Movie?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default); // Usa nullable para indicar que o filme pode não ser encontrado
+    Task<Movie?> GetBySlugAsync(string slug, CancellationToken cancellationToken = default);
+    Task<IEnumerable<Movie>> GetAllAsync(CancellationToken cancellationToken = default);
+    Task<bool> UpdateAsync(Movie movie, CancellationToken cancellationToken = default);
+    Task<bool> DeleteAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<bool> ExistsByIdAsync(Guid id, CancellationToken cancellationToken = default);
 }

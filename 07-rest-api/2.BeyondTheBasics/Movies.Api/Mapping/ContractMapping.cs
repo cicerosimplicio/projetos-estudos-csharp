@@ -14,7 +14,7 @@ public static class ContractMapping
             Id = Guid.NewGuid(),
             Title = request.Title,
             YearOfRelease = request.YearOfRelease,
-            Genres = request.Genres.ToList()
+            Genres = [.. request.Genres]
         };
     }
 
@@ -24,6 +24,7 @@ public static class ContractMapping
         {
             Id = movie.Id,
             Title = movie.Title,
+            Slug = movie.Slug,
             YearOfRelease = movie.YearOfRelease,
             Genres = movie.Genres
         };
@@ -44,7 +45,7 @@ public static class ContractMapping
             Id = id,
             Title = request.Title,
             YearOfRelease = request.YearOfRelease,
-            Genres = request.Genres.ToList()
+            Genres = [.. request.Genres]
         };
     }
 }

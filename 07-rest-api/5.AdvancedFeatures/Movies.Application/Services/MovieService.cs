@@ -37,7 +37,8 @@ public class MovieService : IMovieService
 
     public async Task<IEnumerable<Movie>> GetAllAsync(GetAllMoviesOptions options, CancellationToken token = default)
     {
-        await _optionsValidator.ValidateAndThrowAsync(options, cancellationToken: token);
+        await _optionsValidator.ValidateAndThrowAsync(options, token);
+        
         return await _movieRepository.GetAllAsync(options, token);
     }
 
@@ -58,7 +59,7 @@ public class MovieService : IMovieService
             movie.Rating = rating;
             return movie;
         }
-
+        
         var ratings = await _ratingRepository.GetRatingAsync(movie.Id, userid.Value, token);
         movie.Rating = ratings.Rating;
         movie.UserRating = ratings.UserRating;
